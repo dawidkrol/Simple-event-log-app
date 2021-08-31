@@ -17,13 +17,14 @@ namespace SELwpf.ViewModels
         {
 
         }
+
         public void mSys()
         {
             ActivateItemAsync(IoC.Get<SystemViewModel>());
         }
         public void mApp()
         {
-
+            ActivateItemAsync(IoC.Get<ApplicationViewModel>());
         }
     }
 }

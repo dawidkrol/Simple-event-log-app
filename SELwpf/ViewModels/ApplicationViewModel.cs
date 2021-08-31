@@ -1,21 +1,20 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
-using System.ComponentModel;
-using Caliburn.Micro;
-using System.Runtime.CompilerServices;
 
 namespace SELwpf.ViewModels
 {
-    class SystemViewModel : Screen
+    class ApplicationViewModel : Screen
     {
         EventLog _eventLog;
-        public SystemViewModel()
+        public ApplicationViewModel()
         {
-            _eventLog = new EventLog("System");
+            _eventLog = new EventLog("Application");
             _eventLog.EnableRaisingEvents = true;
             _eventLog.EntryWritten += newEntry;
         }

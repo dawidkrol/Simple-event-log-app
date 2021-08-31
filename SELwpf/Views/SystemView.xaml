@@ -7,14 +7,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <!--<ListBox x:Name="EventsList">
-          <ListBox.ItemTemplate>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="EventsList" Grid.Row="0" VirtualizingStackPanel.IsVirtualizing="False">
+            <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding TimeGenerated}"></TextBlock>
+                    <TextBlock Text="{Binding Message}"></TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox> -->
+        </ListBox>
+
         <!-- Last log date -->
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" x:Name="Last"></TextBlock>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" x:Name="Last" Grid.Row="1"></TextBlock>
     </Grid>
 </UserControl>

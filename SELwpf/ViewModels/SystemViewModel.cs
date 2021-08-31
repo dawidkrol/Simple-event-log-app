@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.ComponentModel;
 using Caliburn.Micro;
+using System.Runtime.CompilerServices;
 
 namespace SELwpf.ViewModels
 {
@@ -17,28 +18,20 @@ namespace SELwpf.ViewModels
             _eventLog = new EventLog("Application");
             _eventLog.EnableRaisingEvents = true;
             _eventLog.EntryWritten += newEntry;
-            //EventsList = new BindingList<string>(EventLog.GetEventLogs("System").Select(x => x.LogDisplayName).ToList());
-            //var a = EventLog.GetEventLogs("System");//.Select(x => x.LogDisplayName);
-            //Console.WriteLine(a);
-
-            //var a = EventLog.GetEventLogs();
-            //var b = a[0].Entries;
-            //foreach (EventLogEntry item in b)
-            //{
-            //    EventsList.Add(item.TimeGenerated);
-            //}
         }
-        //private BindingList<DateTime> _eventsList = new BindingList<DateTime>();
 
-        //public BindingList<DateTime> EventsList
-        //{
-        //    get { return _eventsList; }
-        //    set
-        //    {
-        //        _eventsList = value;
-        //        //NotifyOfPropertyChange(() => EventsList);
-        //    }
-        //}
+        //TODO: Issue with no refreshing EventList in UI
+        private BindingList<EventLogEntry> _eventsList = new BindingList<EventLogEntry>();
+
+        public BindingList<EventLogEntry> EventsList
+        {
+            get { return _eventsList; }
+            set
+            {
+                _eventsList = value;
+                NotifyOfPropertyChange(() => EventsList);
+            }
+        }
 
         public string Last
         {
@@ -48,13 +41,13 @@ namespace SELwpf.ViewModels
             }
         }
 
-
         private void newEntry(object sender, EntryWrittenEventArgs e)
         {
-            NotifyOfPropertyChange(() => Last);
-            //DateTime dateTime = new DateTime(e.Entry.TimeGenerated.Ticks);
-            //EventsList.Add(dateTime);
-            //NotifyOfPropertyChange(() => EventsList);
+            if (_eventsList.All(x => x.TimeGenerated != e.Entry.TimeGenerated))
+            {
+                NotifyOfPropertyChange(() => Last);
+                EventsList.Add(e.Entry);
+            }
         }
     }
 }

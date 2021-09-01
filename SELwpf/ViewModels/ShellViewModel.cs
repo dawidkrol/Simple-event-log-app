@@ -9,22 +9,34 @@ namespace SELwpf.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
-        public ShellViewModel()
+        ApplicationViewModel _aVM;
+        SystemViewModel _sVM;
+        public ShellViewModel(ApplicationViewModel applicationViewModel,SystemViewModel systemViewModel)
         {
-            //ActivateItemAsync(IoC.Get<LoginViewModel>());
+            _aVM = applicationViewModel;
+            _sVM = systemViewModel;
+            _startTime = DateTime.Now;
         }
         public void mHome()
         {
 
         }
+        private DateTime _startTime { get; set; }
+        public string StartTime
+        {
+            get 
+            {
+                return _startTime.ToString("G");
+            }
+        }
 
         public void mSys()
         {
-            ActivateItemAsync(IoC.Get<SystemViewModel>());
+            ActivateItemAsync(_sVM);
         }
         public void mApp()
         {
-            ActivateItemAsync(IoC.Get<ApplicationViewModel>());
+            ActivateItemAsync(_aVM);
         }
     }
 }

@@ -18,8 +18,5 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
-        <!-- Last log date -->
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" x:Name="Last" Grid.Row="1"></TextBlock>
     </Grid>
 </UserControl>

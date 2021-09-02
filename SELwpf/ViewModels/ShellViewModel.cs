@@ -17,6 +17,13 @@ namespace SELwpf.ViewModels
             _sVM = systemViewModel;
             _startTime = DateTime.Now;
         }
+        public bool CanmHome
+        {
+            get
+            {
+                return false;
+            }
+        }
         public void mHome()
         {
 

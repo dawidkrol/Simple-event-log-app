@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SELwpf.Models;
 using SELwpf.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,8 @@ namespace SELwpf
 
             _simpleContainer
                 .Singleton<IWindowManager, WindowManager>()
-                .Singleton<IEventAggregator, EventAggregator>();
+                .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<IDetailsModel, DetailsModel>();
 
             GetType().Assembly.GetTypes()
                 .Where(x => x.IsClass)

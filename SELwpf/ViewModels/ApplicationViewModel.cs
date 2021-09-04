@@ -44,7 +44,7 @@ namespace SELwpf.ViewModels
         {
             get
             {
-                return activeLogEntry?.Message;
+                return activeLogEntry?.Source + " " + activeLogEntry?.TimeGenerated;
             }
         }
 

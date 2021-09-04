@@ -11,22 +11,23 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox x:Name="EventsList" Grid.Row="0" VirtualizingStackPanel.IsVirtualizing="False" SelectedItem="{Binding activeLogEntry}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Message}"></TextBlock>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListView x:Name="EventsList" Grid.Row="0" VirtualizingStackPanel.IsVirtualizing="False" SelectedItem="{Binding activeLogEntry}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="600" Header="Source" DisplayMemberBinding="{Binding Source}"/>
+                    <GridViewColumn Width="200" Header="Time" DisplayMemberBinding="{Binding TimeGenerated}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label>Selected log: </Label>
-            <TextBlock x:Name="activeLogEntryText" Grid.Column="1"></TextBlock>
-            <Button Grid.Column="2" Margin="5" x:Name="showDetails">Details</Button>
+            <Label>Selected log:</Label>
+            <TextBlock x:Name="activeLogEntryText" Grid.Column="1" Margin="5"></TextBlock>
+                <Button Grid.Column="2" Margin="5" x:Name="showDetails">Details</Button>
         </Grid>
     </Grid>
 </UserControl>

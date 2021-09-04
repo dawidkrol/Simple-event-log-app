@@ -15,14 +15,16 @@ namespace SELwpf.ViewModels
         public DetailsViewModel(IDetailsModel detailsModel)
         {
             _detailsModel = detailsModel;
-            mess = _detailsModel?.LogInfo?.TimeGenerated.ToString("G");
+            message = _detailsModel?.LogInfo?.Message;
+            userName = _detailsModel?.LogInfo?.UserName;
+            time = _detailsModel?.LogInfo?.TimeGenerated;
+            sourceName = _detailsModel?.LogInfo?.Source;
+            categoryName = _detailsModel?.LogInfo?.Category;
         }
-        private string _mess;
-
-        public string mess
-        {
-            get { return _mess; }
-            set { _mess = value; }
-        }
+        public string message { get; set; }
+        public string userName { get; }
+        public DateTime? time { get; }
+        public string sourceName { get; }
+        public string categoryName { get; }
     }
 }

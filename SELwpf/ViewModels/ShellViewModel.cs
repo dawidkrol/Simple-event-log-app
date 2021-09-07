@@ -11,10 +11,12 @@ namespace SELwpf.ViewModels
     {
         ApplicationViewModel _aVM;
         SystemViewModel _sVM;
-        public ShellViewModel(ApplicationViewModel applicationViewModel,SystemViewModel systemViewModel)
+        SecurityViewModel _secVM;
+        public ShellViewModel(ApplicationViewModel applicationViewModel,SystemViewModel systemViewModel,SecurityViewModel securityViewModel)
         {
             _aVM = applicationViewModel;
             _sVM = systemViewModel;
+            _secVM = securityViewModel;
             _startTime = DateTime.Now;
         }
         public bool CanmHome
@@ -44,6 +46,10 @@ namespace SELwpf.ViewModels
         public void mApp()
         {
             ActivateItemAsync(_aVM);
+        }
+        public void mSec()
+        {
+            ActivateItemAsync(_secVM);
         }
     }
 }

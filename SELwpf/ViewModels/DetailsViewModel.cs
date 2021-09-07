@@ -21,7 +21,7 @@ namespace SELwpf.ViewModels
             sourceName = _detailsModel?.LogInfo?.Source;
             categoryName = _detailsModel?.LogInfo?.Category;
         }
-        public string message { get; set; }
+        public string message { get; }
         public string userName { get; }
         public DateTime? time { get; }
         public string sourceName { get; }

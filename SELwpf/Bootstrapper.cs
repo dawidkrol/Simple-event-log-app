@@ -54,7 +54,7 @@ namespace SELwpf
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            DisplayRootViewForAsync<ShellViewModel>();
+            DisplayRootViewFor<ShellViewModel>();
         }
     }
 }

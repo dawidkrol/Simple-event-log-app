@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace SELwpf.ViewModels
 {
-    public class SecurityViewModel : Screen
+    public class SecurityViewModel : Screen, ILogViewModel
     {
         private readonly EventLog _eventLog;
         private readonly IDetailsModel _detailsModel;
@@ -63,9 +63,9 @@ namespace SELwpf.ViewModels
             }
         }
 
-        private void newEntry(object sender, EntryWrittenEventArgs e)
+        private async void newEntry(object sender, EntryWrittenEventArgs e)
         {
-            App.Current.Dispatcher.Invoke(() => EventsList?.Add(e.Entry));
+            await App.Current.Dispatcher.InvokeAsync(() => EventsList?.Add(e.Entry));
         }
         public bool CanShowDetails
         {

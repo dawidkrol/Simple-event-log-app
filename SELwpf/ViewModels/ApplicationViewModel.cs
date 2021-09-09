@@ -61,9 +61,9 @@ namespace SELwpf.ViewModels
             }
         }
 
-        private void newEntry(object sender, EntryWrittenEventArgs e)
+        private async void newEntry(object sender, EntryWrittenEventArgs e)
         {
-            App.Current.Dispatcher.Invoke(() => EventsList?.Add(e.Entry));
+            await App.Current.Dispatcher.InvokeAsync(() => EventsList?.Add(e.Entry));
         }
 
         public bool CanShowDetails

@@ -19,7 +19,6 @@ namespace SELwpf.ViewModels
             _eventLog = new EventLog("System");
             _eventLog.EnableRaisingEvents = true;
             _eventLog.EntryWritten += newEntry;
-            //_eventsList.RaiseListChangedEvents = true;
             _windowManager = windowManager;
             _detailsViewModel = detailsViewModel;
             _detailsModel = detailsModel;
@@ -57,9 +56,9 @@ namespace SELwpf.ViewModels
                 NotifyOfPropertyChange(() => EventsList);
             }
         }
-        private void newEntry(object sender, EntryWrittenEventArgs e)
+        private async void newEntry(object sender, EntryWrittenEventArgs e)
         {
-            App.Current.Dispatcher.Invoke(() => EventsList?.Add(e.Entry));
+            await App.Current.Dispatcher.InvokeAsync(() => EventsList?.Add(e.Entry));
         }
         public bool CanShowDetails
         {

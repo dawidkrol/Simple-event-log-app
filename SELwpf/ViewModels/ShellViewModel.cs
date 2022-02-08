@@ -12,23 +12,20 @@ namespace SELwpf.ViewModels
         ApplicationViewModel _aVM;
         SystemViewModel _sVM;
         SecurityViewModel _secVM;
-        public ShellViewModel(ApplicationViewModel applicationViewModel,SystemViewModel systemViewModel,SecurityViewModel securityViewModel)
+        HomeViewModel _homeVM;
+
+        public ShellViewModel(ApplicationViewModel applicationViewModel,SystemViewModel systemViewModel,SecurityViewModel securityViewModel,HomeViewModel homeViewModel)
         {
             _aVM = applicationViewModel;
             _sVM = systemViewModel;
             _secVM = securityViewModel;
+            _homeVM = homeViewModel;
             _startTime = DateTime.Now;
-        }
-        public bool CanmHome
-        {
-            get
-            {
-                return false;
-            }
+            mHome();
         }
         public void mHome()
         {
-
+            ActivateItemAsync(_homeVM);
         }
         private DateTime _startTime { get; set; }
         public string StartTime

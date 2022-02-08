@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using SELwpf.Models;
+﻿using SELwpf.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

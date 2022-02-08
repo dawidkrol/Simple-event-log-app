@@ -9,8 +9,6 @@ namespace SELwpf.ViewModels
 {
     public class HomeViewModel : Screen
     {
-        private string _welcomeText;
-
         public string WelcomeText
         {
             get => $"Welcome {Environment.UserName} in a Simple-event-log-app";

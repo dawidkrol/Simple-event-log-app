@@ -24,7 +24,7 @@ namespace SELwpf.ViewModels
 
         private EventLogEntry _activeLogEntry;
 
-        public EventLogEntry activeLogEntry
+        public virtual EventLogEntry activeLogEntry
         {
             get
             {
@@ -38,7 +38,7 @@ namespace SELwpf.ViewModels
             }
         }
 
-        public string activeLogEntryText
+        public virtual string activeLogEntryText
         {
             get
             {
@@ -46,7 +46,7 @@ namespace SELwpf.ViewModels
             }
         }
 
-        public bool CanShowDetails
+        public virtual bool CanShowDetails
         {
             get
             {
@@ -63,7 +63,7 @@ namespace SELwpf.ViewModels
 
         private BindingList<EventLogEntry> _eventsList = new BindingList<EventLogEntry>();
 
-        public BindingList<EventLogEntry> EventsList
+        public virtual BindingList<EventLogEntry> EventsList
         {
             get { return _eventsList; }
             set
@@ -73,7 +73,7 @@ namespace SELwpf.ViewModels
             }
         }
 
-        public async Task ShowDetails()
+        public virtual async Task ShowDetails()
         {
             dynamic settings = new ExpandoObject();
             settings.WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -85,7 +85,7 @@ namespace SELwpf.ViewModels
             await _windowManager.ShowDialogAsync(IoC.Get<DetailsViewModel>(), null, settings);
         }
 
-        internal async void newEntry(object sender, EntryWrittenEventArgs e)
+        internal virtual async void newEntry(object sender, EntryWrittenEventArgs e)
         {
             await App.Current.Dispatcher.InvokeAsync(() => EventsList?.Add(e.Entry));
         }

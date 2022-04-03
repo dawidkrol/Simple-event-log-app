@@ -1,11 +1,10 @@
 ﻿using Caliburn.Micro;
+using SELwpf.Helpers;
 using SELwpf.Models;
 using SELwpf.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace SELwpf
@@ -24,6 +23,8 @@ namespace SELwpf
         {
             _simpleContainer.Instance(_simpleContainer);
 
+            _simpleContainer.PerRequest<ILog, CustomLogger>();
+
             _simpleContainer
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
@@ -33,8 +34,8 @@ namespace SELwpf
                 .Where(x => x.IsClass)
                 .Where(x => x.Name.EndsWith("ViewModel"))
                 .ToList()
-                .ForEach(viewmodel => _simpleContainer.RegisterPerRequest(viewmodel,viewmodel.ToString(),viewmodel));
-                
+                .ForEach(viewmodel => _simpleContainer.RegisterPerRequest(viewmodel, viewmodel.ToString(), viewmodel));
+
         }
 
         protected override object GetInstance(Type service, string key)

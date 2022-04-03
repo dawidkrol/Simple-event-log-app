@@ -1,9 +1,5 @@
 ﻿using Caliburn.Micro;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SELwpf.ViewModels
 {
@@ -13,24 +9,30 @@ namespace SELwpf.ViewModels
         SystemViewModel _sVM;
         SecurityViewModel _secVM;
         HomeViewModel _homeVM;
+        private readonly ILog _logger;
 
-        public ShellViewModel(ApplicationViewModel applicationViewModel,SystemViewModel systemViewModel,SecurityViewModel securityViewModel,HomeViewModel homeViewModel)
+        public ShellViewModel(ApplicationViewModel applicationViewModel,
+            SystemViewModel systemViewModel, SecurityViewModel securityViewModel,
+            HomeViewModel homeViewModel,
+            ILog logger)
         {
             _aVM = applicationViewModel;
             _sVM = systemViewModel;
             _secVM = securityViewModel;
             _homeVM = homeViewModel;
+            _logger = logger;
             _startTime = DateTime.Now;
             mHome();
         }
         public void mHome()
         {
             ActivateItemAsync(_homeVM);
+            _logger.Info("Activating HomeViewModel");
         }
         private DateTime _startTime { get; set; }
         public string StartTime
         {
-            get 
+            get
             {
                 return _startTime.ToString("G");
             }
@@ -39,14 +41,17 @@ namespace SELwpf.ViewModels
         public void mSys()
         {
             ActivateItemAsync(_sVM);
+            _logger.Info("Activating SystemViewModel");
         }
         public void mApp()
         {
             ActivateItemAsync(_aVM);
+            _logger.Info("Activating ApplicationViewModel");
         }
         public void mSec()
         {
             ActivateItemAsync(_secVM);
+            _logger.Info("Activating SecurityViewModel");
         }
     }
 }
